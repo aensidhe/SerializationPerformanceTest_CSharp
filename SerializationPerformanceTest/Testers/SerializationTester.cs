@@ -78,17 +78,17 @@ namespace SerializationPerformanceTest.Testers
             GC.Collect();
         }
 
-        private TimeSpan Measure<TTestObject>(Func<TTestObject> testFunc, int iterations)
+        private TimeSpan Measure<T>(Func<T> testFunc, int iterations)
         {
-            var list = new List<TTestObject>(iterations);
+            var list = new List<T>(iterations);
 
             //warm up lazy initialized classes
-            TTestObject warmup = testFunc.Invoke();
+            var warmup = testFunc.Invoke();
 
             Stopwatch sw = Stopwatch.StartNew();
             for (int i = 0; i < iterations; i++)
             {
-                TTestObject obj = testFunc.Invoke();
+                var obj = testFunc.Invoke();
 
                 list.Add(obj);
             }

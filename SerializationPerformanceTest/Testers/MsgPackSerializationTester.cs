@@ -11,7 +11,7 @@ namespace SerializationPerformanceTest.Testers
         public MsgPackSerializationTester(TTestObject testObject)
             : base(testObject)
         {
-            serializer = MessagePackSerializer.Create<TTestObject>();
+            serializer = MessagePackSerializer.Get<TTestObject>();
         }
 
 
