@@ -1,0 +1,31 @@
+﻿{
+  "version": "1.0.0",
+  "description": "Serialization test suite",
+  "authors": [
+    "maximn",
+    "aensidhe"
+  ],
+  "tags": [
+    ""
+  ],
+  "projectUrl": "",
+  "licenseUrl": "",
+  "compilationOptions": {
+    "warningsAsErrors": true
+  },
+  "dependencies": {
+    "HtmlAgilityPack": "1.4.9",
+    "JetBrains.Annotations": "10.1.4",
+    "MsgPack.Cli": "0.6.8",
+    "msgpack.light": "0.1.0",
+    "Newtonsoft.Json": "8.0.3",
+    "protobuf-net": "2.0.0.668",
+    "ServiceStack.Text": "4.0.56"
+  },
+  "frameworks": {
+    "net451": {}
+  },
+  "runtimes": {
+    "win": {}
+  }
+}

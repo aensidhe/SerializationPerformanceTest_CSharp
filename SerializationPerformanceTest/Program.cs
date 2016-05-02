@@ -1,9 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
-using System.Net.Mime;
-using System.Threading;
 using SerializationPerformanceTest.TestData.BelgianBeer;
 using SerializationPerformanceTest.Testers;
 
@@ -27,7 +24,8 @@ namespace SerializationPerformanceTest
                     new JsonServiceStackSerializationTester<List<Beer>>(beersList),
                     new ProtobufSerializationTester<List<Beer>>(beersList),
                     new MsgPackSerializationTester<List<Beer>>(beersList),
-                    
+                    new MsgPackLightTester<List<Beer>>(beersList),
+
                     //Single beer
                     new DataContractSerializationTester<Beer>(beer),
                     new XmlSerializationTester<Beer>(beer),
@@ -35,7 +33,8 @@ namespace SerializationPerformanceTest
                     new JsonNewtonsoftSerializationTester<Beer>(beer),
                     new JsonServiceStackSerializationTester<Beer>(beer),
                     new ProtobufSerializationTester<Beer>(beer),
-                    new MsgPackSerializationTester<Beer>(beer),                    
+                    new MsgPackSerializationTester<Beer>(beer),
+                    new MsgPackLightTester<Beer>(beer)
                 };
 
 

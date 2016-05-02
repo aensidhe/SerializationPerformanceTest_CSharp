@@ -1,7 +1,4 @@
-using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using MsgPack.Serialization;
 
 namespace SerializationPerformanceTest.Testers
@@ -14,7 +11,7 @@ namespace SerializationPerformanceTest.Testers
         public MsgPackSerializationTester(TTestObject testObject)
             : base(testObject)
         {
-            serializer = MessagePackSerializer.Create<TTestObject>();            
+            serializer = MessagePackSerializer.Create<TTestObject>();
         }
 
 
@@ -32,5 +29,4 @@ namespace SerializationPerformanceTest.Testers
         }
 
     }
-    
 }
