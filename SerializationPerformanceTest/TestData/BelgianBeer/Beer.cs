@@ -13,7 +13,7 @@ namespace SerializationPerformanceTest.TestData.BelgianBeer
         public string Brand { get; set; }
 
         [ProtoMember(2), DataMember]
-        public List<String> Sort { get; set; }
+        public List<string> Sort { get; set; }
 
         [ProtoMember(3), DataMember]
         public float Alcohol { get; set; }

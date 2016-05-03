@@ -3,12 +3,12 @@ using MsgPack.Serialization;
 
 namespace SerializationPerformanceTest.Testers
 {
-    class MsgPackSerializationTester<TTestObject> : SerializationTester<TTestObject>
+    class MsgPackCli<TTestObject> : SerializationTester<TTestObject>
     {
         private readonly MessagePackSerializer<TTestObject> serializer;
 
 
-        public MsgPackSerializationTester(TTestObject testObject)
+        public MsgPackCli(TTestObject testObject)
             : base(testObject)
         {
             serializer = MessagePackSerializer.Get<TTestObject>();

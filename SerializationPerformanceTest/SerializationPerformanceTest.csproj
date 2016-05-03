@@ -39,15 +39,17 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TestData\BelgianBeer\DataRetriver.cs" />
-    <Compile Include="Testers\BinarySerializationTester.cs" />
-    <Compile Include="Testers\DataContractSerializationTester.cs" />
-    <Compile Include="Testers\JsonNewtonsoftSerializationTester.cs" />
-    <Compile Include="Testers\JsonServiceStackSerializationTester.cs" />
-    <Compile Include="Testers\MsgPackLightTester.cs" />
-    <Compile Include="Testers\MsgPackSerializationTester.cs" />
-    <Compile Include="Testers\ProtobufSerializationTester.cs" />
-    <Compile Include="Testers\SerializationTester.cs" />
-    <Compile Include="Testers\XmlSerializationTester.cs" />
+    <Compile Include="TestData\BelgianBeer\Testers\BeerConverter.cs" />
+    <Compile Include="TestData\BelgianBeer\Testers\BinarySerializationTester.cs" />
+    <Compile Include="TestData\BelgianBeer\Testers\DataContractSerializationTester.cs" />
+    <Compile Include="TestData\BelgianBeer\Testers\JsonNewtonsoftSerializationTester.cs" />
+    <Compile Include="TestData\BelgianBeer\Testers\JsonServiceStackSerializationTester.cs" />
+    <Compile Include="TestData\BelgianBeer\Testers\MsgPackCliSingleObject.cs" />
+    <Compile Include="TestData\BelgianBeer\Testers\MsgPackLightStreams.cs" />
+    <Compile Include="TestData\BelgianBeer\Testers\MsgPackCli.cs" />
+    <Compile Include="TestData\BelgianBeer\Testers\ProtobufSerializationTester.cs" />
+    <Compile Include="TestData\BelgianBeer\Testers\SerializationTester.cs" />
+    <Compile Include="TestData\BelgianBeer\Testers\XmlSerializationTester.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -66,6 +68,10 @@
     <Content Include="TestData\BelgianBeer\Data\beers.xml" />
   </ItemGroup>
   <ItemGroup>
+    <Reference Include="msgpack.light, Version=0.1.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\MsgPack.Light\artifacts\bin\msgpack.light\$(Configuration)\net451\msgpack.light.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.XML" />
