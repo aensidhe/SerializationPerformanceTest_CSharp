@@ -3,13 +3,13 @@ using ServiceStack.Text;
 
 namespace SerializationPerformanceTest.Testers
 {
-    class JsonServiceStackSerializationTester<TTestObject> : SerializationTester<TTestObject>
+    class JsonServiceStack<TTestObject> : SerializationTester<TTestObject>
     {
         private readonly TypeSerializer<TTestObject> serializer;
         private StreamReader streamReader;
 
 
-        public JsonServiceStackSerializationTester(TTestObject testObject)
+        public JsonServiceStack(TTestObject testObject)
             : base(testObject)
         {
             serializer = new TypeSerializer<TTestObject>();

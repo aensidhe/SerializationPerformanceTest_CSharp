@@ -40,16 +40,16 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TestData\BelgianBeer\DataRetriver.cs" />
     <Compile Include="TestData\BelgianBeer\Testers\BeerConverter.cs" />
-    <Compile Include="TestData\BelgianBeer\Testers\BinarySerializationTester.cs" />
-    <Compile Include="TestData\BelgianBeer\Testers\DataContractSerializationTester.cs" />
-    <Compile Include="TestData\BelgianBeer\Testers\JsonNewtonsoftSerializationTester.cs" />
-    <Compile Include="TestData\BelgianBeer\Testers\JsonServiceStackSerializationTester.cs" />
+    <Compile Include="TestData\BelgianBeer\Testers\Binary.cs" />
+    <Compile Include="TestData\BelgianBeer\Testers\DataContract.cs" />
+    <Compile Include="TestData\BelgianBeer\Testers\JsonNewtonsoft.cs" />
+    <Compile Include="TestData\BelgianBeer\Testers\JsonServiceStack.cs" />
     <Compile Include="TestData\BelgianBeer\Testers\MsgPackCliSingleObject.cs" />
     <Compile Include="TestData\BelgianBeer\Testers\MsgPackLightStreams.cs" />
     <Compile Include="TestData\BelgianBeer\Testers\MsgPackCli.cs" />
-    <Compile Include="TestData\BelgianBeer\Testers\ProtobufSerializationTester.cs" />
+    <Compile Include="TestData\BelgianBeer\Testers\Protobuf.cs" />
     <Compile Include="TestData\BelgianBeer\Testers\SerializationTester.cs" />
-    <Compile Include="TestData\BelgianBeer\Testers\XmlSerializationTester.cs" />
+    <Compile Include="TestData\BelgianBeer\Testers\XmlSerializer.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -68,9 +68,8 @@
     <Content Include="TestData\BelgianBeer\Data\beers.xml" />
   </ItemGroup>
   <ItemGroup>
-    <Reference Include="msgpack.light, Version=0.1.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\MsgPack.Light\artifacts\bin\msgpack.light\$(Configuration)\net451\msgpack.light.dll</HintPath>
+    <Reference Include="MsgPack.Light">
+      <HintPath>..\..\MsgPack.Light\artifacts\bin\msgpack.light.VS\MsgPack.Light.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Runtime.Serialization" />

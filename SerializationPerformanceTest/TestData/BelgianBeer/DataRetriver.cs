@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Net;
@@ -39,9 +40,12 @@ namespace SerializationPerformanceTest.TestData.BelgianBeer
                 float alcohol;
 
                 bool hasFourColumns = columns.Length == 4;
-                if (hasFourColumns && float.TryParse(columns[2].TrimEnd('%'), out alcohol))
+                if (hasFourColumns && float.TryParse(columns[2].TrimEnd('%'), NumberStyles.Any, CultureInfo.InvariantCulture, out alcohol))
                 {
-                    var sort = columns[1].Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries).ToList();
+                    var sort = columns[1]
+                        .Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries)
+                        .Select(x => x.Trim().Trim('"'))
+                        .ToList();
 
                     Beer beer = new Beer()
                     {
@@ -54,10 +58,6 @@ namespace SerializationPerformanceTest.TestData.BelgianBeer
                     list.Add(beer);
                 }
             }
-
-            //FileStream fs = new FileStream("beers.xml", FileMode.Create);
-            //new XmlSerializer(typeof(List<Beer>)).Serialize(fs, list);
-            //fs.Close();
 
             return list;
 

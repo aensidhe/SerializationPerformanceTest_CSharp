@@ -3,10 +3,10 @@ using System.Xml.Serialization;
 
 namespace SerializationPerformanceTest.Testers
 {
-    class XmlSerializationTester<TTestObject> : SerializationTester<TTestObject>{
+    class XmlSerializer<TTestObject> : SerializationTester<TTestObject>{
         private readonly XmlSerializer serializer;
 
-        public XmlSerializationTester(TTestObject testObject)
+        public XmlSerializer(TTestObject testObject)
             : base(testObject)
         {
             serializer = new XmlSerializer(typeof(TTestObject));

@@ -3,11 +3,11 @@ using System.Runtime.Serialization;
 
 namespace SerializationPerformanceTest.Testers
 {
-    class DataContractSerializationTester<TTestObject> : SerializationTester<TTestObject>
+    class DataContract<TTestObject> : SerializationTester<TTestObject>
     {
         private readonly DataContractSerializer serializer;
 
-        public DataContractSerializationTester(TTestObject testObject)
+        public DataContract(TTestObject testObject)
             : base(testObject)
         {
             serializer = new DataContractSerializer(typeof(TTestObject));

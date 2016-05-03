@@ -4,11 +4,11 @@ using System.Runtime.Serialization.Formatters.Binary;
 
 namespace SerializationPerformanceTest.Testers
 {
-    class BinarySerializationTester<TTestObject> : SerializationTester<TTestObject>
+    class Binary<TTestObject> : SerializationTester<TTestObject>
     {
         private readonly IFormatter formatter;
 
-        public BinarySerializationTester(TTestObject testObject)
+        public Binary(TTestObject testObject)
             : base(testObject)
         {
             formatter = new BinaryFormatter();

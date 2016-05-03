@@ -2,9 +2,9 @@ using System.IO;
 
 namespace SerializationPerformanceTest.Testers
 {
-    class ProtobufSerializationTester<TTestObject> : SerializationTester<TTestObject>
+    class Protobuf<TTestObject> : SerializationTester<TTestObject>
     {
-        public ProtobufSerializationTester(TTestObject testObject)
+        public Protobuf(TTestObject testObject)
             : base(testObject)
         {
         }

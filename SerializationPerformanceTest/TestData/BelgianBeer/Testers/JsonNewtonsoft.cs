@@ -4,13 +4,13 @@ using JsonSerializer = Newtonsoft.Json.JsonSerializer;
 
 namespace SerializationPerformanceTest.Testers
 {
-    class JsonNewtonsoftSerializationTester<TTestObject> : SerializationTester<TTestObject>
+    class JsonNewtonsoft<TTestObject> : SerializationTester<TTestObject>
     {
         private readonly JsonSerializer jsonSerializer;
         private StreamReader streamReader;
 
 
-        public JsonNewtonsoftSerializationTester(TTestObject testObject)
+        public JsonNewtonsoft(TTestObject testObject)
             : base(testObject)
         {
             jsonSerializer = new JsonSerializer();

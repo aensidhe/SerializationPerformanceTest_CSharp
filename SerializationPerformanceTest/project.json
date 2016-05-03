@@ -16,13 +16,14 @@
   "dependencies": {
     "HtmlAgilityPack": "1.4.9",
     "JetBrains.Annotations": "10.1.4",
+    //"msgpack.light": "",
     "MsgPack.Cli": "0.6.8",
     "Newtonsoft.Json": "8.0.3",
     "protobuf-net": "2.0.0.668",
     "ServiceStack.Text": "4.0.56"
   },
   "frameworks": {
-    "net451": {}
+    "net451": { }
   },
     "runtimes": {
         "win": { }

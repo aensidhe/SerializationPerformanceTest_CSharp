@@ -1,6 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
+using System.IO;
 using System.Linq;
+using System.Text;
+using System.Threading;
 using SerializationPerformanceTest.TestData.BelgianBeer;
 using SerializationPerformanceTest.Testers;
 
@@ -11,48 +15,59 @@ namespace SerializationPerformanceTest
     {
         private static void Main()
         {
+            var beers = BelgianBeerDataRetriever.GetDataFromWikipedia();
             List<Beer> beersList = BelgianBeerDataRetriever.GetDataFromXML();
-            Beer beer = beersList.First();
+            Beer testBeer = beersList.First();
 
             var testers = new SerializationTester[]
                 {
                     //List of beers
-                    new DataContractSerializationTester<List<Beer>>(beersList),
-                    new XmlSerializationTester<List<Beer>>(beersList),
-                    new BinarySerializationTester<List<Beer>>(beersList),
-                    new JsonNewtonsoftSerializationTester<List<Beer>>(beersList),
-                    new JsonServiceStackSerializationTester<List<Beer>>(beersList),
-                    new ProtobufSerializationTester<List<Beer>>(beersList),
+                    new DataContract<List<Beer>>(beersList),
+                    new XmlSerializer<List<Beer>>(beersList),
+                    new Binary<List<Beer>>(beersList),
+                    new JsonNewtonsoft<List<Beer>>(beersList),
+                    new JsonServiceStack<List<Beer>>(beersList),
+                    new Protobuf<List<Beer>>(beersList),
                     new MsgPackCli<List<Beer>>(beersList),
                     new MsgPackCliSingleObject<List<Beer>>(beersList),
                     new MsgPackLightStreams<List<Beer>>(beersList),
 
                     //Single beer
-                    new DataContractSerializationTester<Beer>(beer),
-                    new XmlSerializationTester<Beer>(beer),
-                    new BinarySerializationTester<Beer>(beer),
-                    new JsonNewtonsoftSerializationTester<Beer>(beer),
-                    new JsonServiceStackSerializationTester<Beer>(beer),
-                    new ProtobufSerializationTester<Beer>(beer),
-                    new MsgPackCli<Beer>(beer),
-                    new MsgPackCliSingleObject<Beer>(beer),
-                    new MsgPackLightStreams<Beer>(beer)
+                    new DataContract<Beer>(testBeer),
+                    new XmlSerializer<Beer>(testBeer),
+                    new Binary<Beer>(testBeer),
+                    new JsonNewtonsoft<Beer>(testBeer),
+                    new JsonServiceStack<Beer>(testBeer),
+                    new Protobuf<Beer>(testBeer),
+                    new MsgPackCli<Beer>(testBeer),
+                    new MsgPackCliSingleObject<Beer>(testBeer),
+                    new MsgPackLightStreams<Beer>(testBeer)
                 };
 
 
 
-            foreach (var tester in testers)
+            //foreach (var tester in testers)
+            //{
+            //    using (tester)
+            //    {
+            //        tester.Test();
+
+            //        Console.WriteLine();
+            //    }
+
+            //    GC.Collect();
+            //}
+
+            Thread.CurrentThread.CurrentCulture = CultureInfo.InvariantCulture;
+            Thread.CurrentThread.CurrentUICulture = CultureInfo.InvariantCulture;
+
+            var builder = new StringBuilder();
+            foreach (var beer in beers)
             {
-                using (tester)
-                {
-                    tester.Test();
-
-                    Console.WriteLine();
-                }
-
-                GC.Collect();
+                builder.AppendLine($"new Beer {{ Brand = \"{beer.Brand.Replace("\"", "'")}\", Alcohol = {beer.Alcohol}F, Brewery = \"{beer.Brewery}\", Sort = new List<string> {{ {string.Join(", ", beer.Sort.Select(x => $"\"{x.Replace("\"", "'")}\""))} }} }},");
             }
 
+            File.WriteAllText("beer.cs", builder.ToString(), new UTF8Encoding(false));
         }
     }
 }
